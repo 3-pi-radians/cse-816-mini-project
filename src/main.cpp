@@ -9,91 +9,78 @@ int main() {
   int choice;
 
   while (true) {
-
-    cout << "\n===== Scientific Calculator =====\n";
-    cout << "1. Add\n";
-    cout << "2. Subtract\n";
-    cout << "3. Divide\n";
-    cout << "4. Multiply\n";
-    cout << "5. Factorial\n";
-    cout << "6. Exit\n";
-    cout << "Enter your choice: ";
+    cout << "\n===== Welcome to the Scientific Calculator =====" << endl;
+    cout << "Please select an operation:" << endl;
+    cout << "  1. Addition" << endl;
+    cout << "  2. Subtraction" << endl;
+    cout << "  3. Division" << endl;
+    cout << "  4. Multiplication" << endl;
+    cout << "  5. Factorial" << endl;
+    cout << "  6. Exit" << endl;
+    cout << "Enter your choice (1-6): ";
 
     cin >> choice;
 
     if (cin.fail()) {
       cin.clear();
       cin.ignore(numeric_limits<streamsize>::max(), '\n');
-      cout << "Invalid input. Please enter a number.\n";
+      cout << "Invalid input. Please enter a number between 1 and 6." << endl;
       continue;
     }
 
     if (choice == 6) {
-      cout << "Exiting calculator.\n";
+      cout << "Thank you for using the calculator. Goodbye!" << endl;
       break;
     }
 
     try {
-
       if (choice == 1) {
-        double a, b;
-        cout << "Enter two numbers: ";
-        cin >> a >> b;
-
-        cout << "Result: " << calc.add(a, b) << endl;
-      }
-
-      else if (choice == 2) {
-        double a, b;
-        cout << "Enter two numbers: ";
-        cin >> a >> b;
-
-        cout << "Result: " << calc.subtract(a, b) << endl;
-      }
-
-      else if (choice == 3) {
-        double a, b;
-        cout << "Enter two numbers: ";
-        cin >> a >> b;
-
-        cout << "Result: " << calc.divide(a, b) << endl;
-      }
-
-      else if (choice == 4) {
-        double a, b;
-        cout << "Enter two numbers: ";
-        cin >> a >> b;
-
-        double result = calc.multiply(a, b);
-
+        double num1, num2;
+        cout << "Enter the first number: ";
+        cin >> num1;
+        cout << "Enter the second number: ";
+        cin >> num2;
+        cout << "Sum: " << calc.add(num1, num2) << endl;
+      } else if (choice == 2) {
+        double num1, num2;
+        cout << "Enter the first number: ";
+        cin >> num1;
+        cout << "Enter the second number: ";
+        cin >> num2;
+        cout << "Difference: " << calc.subtract(num1, num2) << endl;
+      } else if (choice == 3) {
+        double numerator, denominator;
+        cout << "Enter the numerator: ";
+        cin >> numerator;
+        cout << "Enter the denominator: ";
+        cin >> denominator;
+        cout << "Answer: " << calc.divide(numerator, denominator) << endl;
+      } else if (choice == 4) {
+        double num1, num2;
+        cout << "Enter the first number: ";
+        cin >> num1;
+        cout << "Enter the second number: ";
+        cin >> num2;
+        double result = calc.multiply(num1, num2);
         if (result > numeric_limits<double>::max()) {
           throw overflow_error("Multiplication overflow.");
         }
-
-        cout << "Result: " << result << endl;
-      }
-
-      else if (choice == 5) {
+        cout << "Product: " << result << endl;
+      } else if (choice == 5) {
         int n;
-        cout << "Enter a number: ";
+        cout << "Enter a non-negative integer (max 20): ";
         cin >> n;
-
         if (n > 20) {
           throw overflow_error(
               "Factorial too large (overflow risk). Max allowed = 20.");
         }
-
-        cout << "Result: " << calc.factorial(n) << endl;
+        cout << "Factorial: " << calc.factorial(n) << endl;
+      } else {
+        cout << "Invalid choice. Please select a valid option (1-6)." << endl;
       }
-
-      else {
-        cout << "Invalid choice. Try again.\n";
-      }
-
     } catch (const exception &e) {
       cout << "Error: " << e.what() << endl;
     }
   }
-
   return 0;
 }

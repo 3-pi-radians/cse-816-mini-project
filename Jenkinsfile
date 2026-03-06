@@ -9,7 +9,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                echo "Building the project..."
+                echo "Building calculator..."
                 sh 'make build'
             }
         }
@@ -23,10 +23,20 @@ pipeline {
 
         stage('Docker Build') {
             steps {
-                echo
-                sh 'docker build -t scientific-calculator .'
+                echo "Building Docker image..."
+                sh '/opt/homebrew/bin/docker build -t scientific-calculator .'
             }
         }
 
+    }
+
+    post {
+        success {
+            echo "Pipeline completed successfully"
+        }
+
+        failure {
+            echo "Pipeline failed"
+        }
     }
 }

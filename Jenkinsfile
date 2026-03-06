@@ -1,39 +1,32 @@
 pipeline {
     agent any
 
+    environment {
+        PATH = "/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+    }
+
     stages {
 
-        stage('Build Application') {
+        stage('Build') {
             steps {
-                echo "Compiling calculator application..."
-                sh 'g++ src/main.cpp src/calculator.cpp -o calculator'
+                echo "Building the project..."
+                sh 'make build'
             }
         }
 
-        stage('Run Unit Tests') {
+        stage('Test') {
             steps {
-                echo "Running unit tests..."
-                sh 'g++ src/calculator.cpp tests/test_calculator.cpp -o test'
-                sh './test'
+                echo "Running tests..."
+                sh 'make test'
             }
         }
 
         stage('Docker Build') {
             steps {
-                echo "Building Docker image..."
-                sh '/opt/homebrew/bin/docker build -t scientific-calculator .'
+                echo
+                sh 'docker build -t scientific-calculator .'
             }
         }
 
-    }
-
-    post {
-        success {
-            echo 'Pipeline executed successfully!'
-        }
-
-        failure {
-            echo 'Pipeline failed. Check logs.'
-        }
     }
 }

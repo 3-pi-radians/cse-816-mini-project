@@ -5,13 +5,14 @@ pipeline {
 
     stage('Clone Repository') {
         steps {
-            git branch: 'main', url: 'https://github.com/3-pi-radians/cse-816-mini-project.git'
+            git branch: 'main',
+            url: 'https://github.com/3-pi-radians/cse-816-mini-project.git'
         }
     }
 
         stage('Build') {
             steps {
-                sh 'g++ calculator.cpp -o calculator'
+                sh 'g++ ./src/calculator.cpp -o calculator'
             }
         }
 

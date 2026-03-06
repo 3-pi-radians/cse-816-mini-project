@@ -21,7 +21,7 @@ pipeline {
         stage('Docker Build') {
             steps {
                 echo "Building Docker image..."
-                sh 'docker build -t scientific-calculator .'
+                sh '/opt/homebrew/bin/docker build -t scientific-calculator .'
             }
         }
 

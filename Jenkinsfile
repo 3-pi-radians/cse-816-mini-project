@@ -10,22 +10,26 @@ pipeline {
         }
     }
 
-        stage('Build') {
-            steps {
-                sh 'g++ ./src/calculator.cpp -o calculator'
+    stage('Build') {
+                steps {
+                    echo "Compiling calculator source code..."
+                    sh 'g++ src/calculator.cpp -o calculator'
+                }
             }
-        }
 
-        stage('Test') {
-            steps {
-                sh './calculator'
+            stage('Test') {
+                steps {
+                    echo "Running unit tests..."
+                    sh 'g++ src/calculator.cpp tests/test_calculator.cpp -o test'
+                    sh './test'
+                }
             }
-        }
 
-        stage('Docker Build') {
-            steps {
-                sh 'docker build -t calculator-image .'
+            stage('Docker Build') {
+                steps {
+                    echo "Building Docker image..."
+                    sh 'docker build -t scientific-calculator .'
+                }
             }
         }
-    }
 }

@@ -3,11 +3,11 @@ pipeline {
 
     stages {
 
-        stage('Clone Repository') {
-            steps {
-                git 'https://github.com/3-pi-radians/cse-816-mini-project.git'
-            }
+    stage('Clone Repository') {
+        steps {
+            git branch: 'main', url: 'https://github.com/3-pi-radians/cse-816-mini-project.git'
         }
+    }
 
         stage('Build') {
             steps {

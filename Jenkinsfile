@@ -44,6 +44,13 @@ pipeline {
                 }
             }
         }
+
+        stage('Deploy') {
+            steps {
+                echo "Deploying container using Ansible..."
+                sh 'ansible-playbook -i ansible/hosts ansible/deploy.yml'
+            }
+}
     }
 
     post {

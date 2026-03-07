@@ -21,3 +21,19 @@ unsigned long long ScientificCalculator::factorial(int n) {
     result *= i;
   return result;
 }
+double ScientificCalculator::sqrt(double x) {
+  if (x < 0)
+    throw std::invalid_argument("Square root undefined for negative values.");
+  return std::sqrt(x);
+}
+
+double ScientificCalculator::ln(double x) {
+  if (x <= 0)
+    throw std::invalid_argument(
+        "Natural logarithm undefined for non-positive values.");
+  return std::log(x);
+}
+
+double ScientificCalculator::power(double x, double b) {
+  return std::pow(x, b);
+}

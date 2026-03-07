@@ -16,8 +16,11 @@ int main() {
     cout << "  3. Division" << endl;
     cout << "  4. Multiplication" << endl;
     cout << "  5. Factorial" << endl;
-    cout << "  6. Exit" << endl;
-    cout << "Enter your choice (1-6): ";
+    cout << "  6. Square root" << endl;
+    cout << "  7. Natural logarithm (ln)" << endl;
+    cout << "  8. Power (x^b)" << endl;
+    cout << "  9. Exit" << endl;
+    cout << "Enter your choice (1-9): ";
 
     cin >> choice;
 
@@ -28,7 +31,7 @@ int main() {
       continue;
     }
 
-    if (choice == 6) {
+    if (choice == 9) {
       cout << "Thank you for using the calculator. Goodbye!" << endl;
       break;
     }
@@ -75,8 +78,25 @@ int main() {
               "Factorial too large (overflow risk). Max allowed = 20.");
         }
         cout << "Factorial: " << calc.factorial(n) << endl;
+      } else if (choice == 6) {
+        double x;
+        cout << "Enter a non-negative number: ";
+        cin >> x;
+        cout << "Square root: " << calc.sqrt(x) << endl;
+      } else if (choice == 7) {
+        double x;
+        cout << "Enter a positive number: ";
+        cin >> x;
+        cout << "Natural logarithm (ln): " << calc.ln(x) << endl;
+      } else if (choice == 8) {
+        double x, b;
+        cout << "Enter the base (x): ";
+        cin >> x;
+        cout << "Enter the exponent (b): ";
+        cin >> b;
+        cout << "Power (x^b): " << calc.power(x, b) << endl;
       } else {
-        cout << "Invalid choice. Please select a valid option (1-6)." << endl;
+        cout << "Invalid choice. Please select a valid option (1-9)." << endl;
       }
     } catch (const exception &e) {
       cout << "Error: " << e.what() << endl;

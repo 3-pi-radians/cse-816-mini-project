@@ -11,6 +11,9 @@ public:
   double divide(double a, double b);
 
   unsigned long long factorial(int n);
+  double sqrt(double x);
+  double ln(double x);
+  double power(double x, double b);
 };
 
 #endif

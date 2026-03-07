@@ -7,14 +7,14 @@ pipeline {
 
     stages {
 
-        stage('Build') {
+        stage('Build Calculator') {
             steps {
                 echo "Building calculator..."
                 sh 'make build'
             }
         }
 
-        stage('Test') {
+        stage('Test Calculator') {
             steps {
                 echo "Running tests..."
                 sh 'make test'
@@ -45,7 +45,7 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
+        stage('Deploy Calculator') {
             steps {
                 echo "Deploying container using Ansible..."
                 sh 'ansible-playbook -i ansible/hosts ansible/deploy.yml'

@@ -39,6 +39,7 @@ pipeline {
                 )]) {
 
                     sh 'echo $DOCKER_PASS | /opt/homebrew/bin/docker login -u $DOCKER_USER --password-stdin'
+                    sh '/opt/homebrew/bin/docker tag scientific-calculator 3piradians/scientific-calculator:latest'
                     sh '/opt/homebrew/bin/docker push $DOCKER_IMAGE'
                 }
             }

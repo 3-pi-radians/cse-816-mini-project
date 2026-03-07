@@ -50,16 +50,39 @@ pipeline {
                 echo "Deploying container using Ansible..."
                 sh 'ansible-playbook -i ansible/hosts ansible/deploy.yml'
             }
+        }
+    }
+
+post {
+
+    success {
+        emailext (
+            subject: "Jenkins Pipeline SUCCESS",
+            body: """
+                Build Successful!
+
+                Job: ${env.JOB_NAME}
+                Build Number: ${env.BUILD_NUMBER}
+                Build URL: ${env.BUILD_URL}
+                """,
+            to: "pankajdeopa@gmail.com"
+        )
+    }
+
+    failure {
+        emailext (
+            subject: "Jenkins Pipeline FAILED",
+            body: """
+                    Build Failed!
+
+                    Job: ${env.JOB_NAME}
+                    Build Number: ${env.BUILD_NUMBER}
+
+                    Check logs here:
+                    ${env.BUILD_URL}
+                """,
+            to: "pankajdeopa@gmail.com"
+        )
+    }
 }
-    }
-
-    post {
-        success {
-            echo "Pipeline completed successfully"
-        }
-
-        failure {
-            echo "Pipeline failed"
-        }
-    }
 }

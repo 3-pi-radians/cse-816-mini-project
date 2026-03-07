@@ -28,6 +28,21 @@ pipeline {
             }
         }
 
+        stage('Docker Push') {
+            steps {
+                echo "Pushing image to Docker Hub..."
+
+                withCredentials([usernamePassword(
+                    credentialsId: 'dockerhub-credentials',
+                    usernameVariable: 'DOCKER_USER',
+                    passwordVariable: 'DOCKER_PASS'
+                )]) {
+
+                    sh 'echo $DOCKER_PASS | /opt/homebrew/bin/docker login -u $DOCKER_USER --password-stdin'
+                    sh '/opt/homebrew/bin/docker push $DOCKER_IMAGE'
+                }
+            }
+        }
     }
 
     post {

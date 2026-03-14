@@ -27,6 +27,7 @@ int main() {
   assert(calc.power(2, 3) == 8);
   assert(calc.power(5, 0) == 1);
   assert(calc.power(9, 0.5) == 3);
+  assert(calc.power(9, 2) == 81);
 
   std::cout << "All arithmetic and scientific tests passed successfully!"
             << std::endl;

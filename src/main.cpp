@@ -9,7 +9,7 @@ int main() {
   int choice;
 
   while (true) {
-    cout << "\n=== Scientific Calculator ===" << endl;
+    cout << "\n=== Welcome to the Scientific Calculator ===" << endl;
     cout << "Please select an operation:" << endl;
     cout << "  1. Addition" << endl;
     cout << "  2. Subtraction" << endl;
@@ -20,16 +20,14 @@ int main() {
     cout << "  7. Natural logarithm (ln)" << endl;
     cout << "  8. Power (x^b)" << endl;
     cout << "  9. Exit" << endl;
-    cout << "Enter your choice (1-9): "
+    cout << "Enter your choice (1-9): ";
 
-            cin >>
-        choice;
+    cin >> choice;
 
     if (cin.fail()) {
       cin.clear();
       cin.ignore(numeric_limits<streamsize>::max(), '\n');
-      cout << "Invalid input. Please enter a number between range 1 and 6."
-           << endl;
+      cout << "Invalid input. Please enter a number between 1 and 6." << endl;
       continue;
     }
 

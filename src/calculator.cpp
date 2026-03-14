@@ -21,6 +21,7 @@ unsigned long long ScientificCalculator::factorial(int n) {
     result *= i;
   return result;
 }
+
 double ScientificCalculator::sqrt(double x) {
   if (x < 0)
     throw std::invalid_argument("Square root undefined for negative values.");

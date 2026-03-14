@@ -20,9 +20,10 @@ int main() {
     cout << "  7. Natural logarithm (ln)" << endl;
     cout << "  8. Power (x^b)" << endl;
     cout << "  9. Exit" << endl;
-    cout << "Enter your choice (1-9): ";
+    cout << "Enter your choice (1-9): "
 
-    cin >> choice;
+            cin >>
+        choice;
 
     if (cin.fail()) {
       cin.clear();

@@ -14,6 +14,7 @@ int main() {
   // Factorial tests
   assert(calc.factorial(0) == 1);
   assert(calc.factorial(5) == 120);
+  assert(calc.factorial(10) == 3628800);
 
   // Square root tests
   assert(calc.sqrt(4) == 2);

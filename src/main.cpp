@@ -27,7 +27,8 @@ int main() {
     if (cin.fail()) {
       cin.clear();
       cin.ignore(numeric_limits<streamsize>::max(), '\n');
-      cout << "Invalid input. Please enter a number between 1 and 6." << endl;
+      cout << "Invalid input. Please enter a number between range 1 and 6."
+           << endl;
       continue;
     }
 
